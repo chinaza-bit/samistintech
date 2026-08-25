@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { Plus } from 'lucide-react';
+import StoryViewer from './StoryViewer';
 
 type Story = {
   id: string;
@@ -12,6 +13,7 @@ type Story = {
 
 export default function StoriesBar() {
   const [stories, setStories] = useState<Story[]>([]);
+  const [viewerIndex, setViewerIndex] = useState<number | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -59,8 +61,12 @@ export default function StoriesBar() {
         <span className="text-[11px] mt-1 text-gray-500">Your story</span>
       </div>
 
-      {stories.map((s) => (
-        <div key={s.id} className="flex flex-col items-center shrink-0">
+      {stories.map((s, i) => (
+        <button
+          key={s.id}
+          onClick={() => setViewerIndex(i)}
+          className="flex flex-col items-center shrink-0"
+        >
           <div className="w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-brand to-pink-400">
             <img
               src={s.media_url}
@@ -70,8 +76,16 @@ export default function StoriesBar() {
           <span className="text-[11px] mt-1 text-gray-500 truncate w-14 text-center">
             {s.profiles?.username || 'user'}
           </span>
-        </div>
+        </button>
       ))}
+
+      {viewerIndex !== null && (
+        <StoryViewer
+          stories={stories}
+          startIndex={viewerIndex}
+          onClose={() => setViewerIndex(null)}
+        />
+      )}
     </div>
   );
 }
