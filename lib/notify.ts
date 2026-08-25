@@ -1,17 +1,12 @@
 import { supabase } from './supabaseClient';
 
-type NotifyType = 'like' | 'comment' | 'follow' | 'message';
+type NotifyType = 'like' | 'comment' | 'follow' | 'message' | 'story_like';
 
-/**
- * Creates a notification for `recipientId`, triggered by the currently
- * logged-in user. Silently does nothing if the recipient is the same
- * person as the actor (no "you liked your own post" notifications),
- * or if no one is logged in.
- */
 export async function notify(
   recipientId: string,
   type: NotifyType,
-  postId?: string
+  postId?: string,
+  storyId?: string
 ) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user || user.id === recipientId) return;
@@ -21,5 +16,6 @@ export async function notify(
     actor_id: user.id,
     type,
     post_id: postId || null,
+    story_id: storyId || null,
   });
 }
