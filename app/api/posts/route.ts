@@ -12,7 +12,7 @@ export async function GET(req: Request) {
 
   const { data, error } = await supabaseAdmin
     .from('posts')
-    .select('*, profiles(username, avatar_url)')
+    .select('*, profiles!author_id(username, avatar_url)')
     .eq('category', category)
     .order('created_at', { ascending: false })
     .limit(50);

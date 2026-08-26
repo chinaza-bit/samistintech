@@ -20,7 +20,7 @@ export default function Comments({ postId, authorId }: { postId: string; authorI
   async function loadComments() {
     const { data, count: total } = await supabase
       .from('comments')
-      .select('id, content, created_at, profiles(username, avatar_url)', { count: 'exact' })
+      .select('id, content, created_at, profiles!author_id(username, avatar_url)', { count: 'exact' })
       .eq('post_id', postId)
       .order('created_at', { ascending: true });
     setComments((data as any) || []);

@@ -15,7 +15,7 @@ export default function BlogPage() {
     setLoading(true);
     const { data } = await supabase
       .from('blog_posts')
-      .select('id, title, cover_image_url, body_html, created_at, profiles(username, avatar_url)')
+      .select('id, title, cover_image_url, body_html, created_at, profiles!author_id(username, avatar_url)')
       .order('created_at', { ascending: false });
     setPosts((data as any) || []);
     setLoading(false);

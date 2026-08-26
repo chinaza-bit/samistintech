@@ -41,14 +41,17 @@ export default function SignUp() {
       return setMsg({ type: 'error', text: error.message });
     }
 
-    // Create the matching profile row (id must equal the auth user id)
+    /* Create the matching profile row (id must equal the auth user id)
     if (data.user) {
       await supabase.from('profiles').insert({
         id: data.user.id,
         username,
         account_type: accountType,
       });
-    }
+    }*/
+
+    // Note: the matching profiles is now created automatically by a
+    // database trigger, so it works even before the user their email.
 
     setLoading(false);
     setMsg({

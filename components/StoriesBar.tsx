@@ -21,7 +21,7 @@ export default function StoriesBar() {
   async function loadStories() {
     const { data } = await supabase
       .from('stories')
-      .select('id, author_id, media_url, profiles(username, avatar_url)')
+      .select('id, author_id, media_url, profiles!author_id(username, avatar_url)')
       .gt('expires_at', new Date().toISOString())
       .order('created_at', { ascending: false });
     setStories((data as any) || []);

@@ -20,7 +20,7 @@ export default function CategoryFeed({
     setLoading(true);
     const { data } = await supabase
       .from('posts')
-      .select('id, author_id, text_content, text_size, text_color, bg_color, image_url, video_url, music_url, link_url, created_at, profiles(username, avatar_url)')
+      .select('id, author_id, text_content, text_size, text_color, bg_color, image_url, video_url, music_url, link_url, created_at, profiles!author_id(username, avatar_url)')
       .eq('category', category)
       .order('created_at', { ascending: false });
     setPosts((data as any) || []);
