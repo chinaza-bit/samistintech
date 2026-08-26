@@ -15,6 +15,9 @@ export default function Landing() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-3">
       <h1 className="text-3xl font-bold text-brand">SamistInTech</h1>
+      <p className="text-[11px] uppercase tracking-wide text-gray-400 font-medium">
+        Tech · Business · Innovation
+      </p>
       <p className="text-gray-500 text-sm">Loading…</p>
     </div>
   );
