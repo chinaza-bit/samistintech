@@ -12,7 +12,7 @@ const NAV_ITEMS = [
   { href: '/tech-trends', label: 'Tech', icon: TrendingUp },
   { href: '/business-trends', label: 'Biz', icon: Briefcase },
   { href: '/business', label: 'Store', icon: Store },
-  { href: '/reels', label: 'Reels', icon: Clapperboard },
+  { href: '/reels', label: 'Short Clips', icon: Clapperboard },
   { href: '/blog', label: 'Blog', icon: Newspaper },
   { href: '/chat', label: 'Chat', icon: MessageCircle },
   { href: '/profile', label: 'Profile', icon: User },
