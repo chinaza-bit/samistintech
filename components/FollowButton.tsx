@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { notify } from '@/lib/notify';
+import Spinner from './Spinner';
 
 export default function FollowButton({ profileId }: { profileId: string }) {
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
@@ -49,17 +50,17 @@ export default function FollowButton({ profileId }: { profileId: string }) {
     setLoading(false);
   }
 
-  // Don't show a follow button on your own profile.
   if (currentUserId === profileId) return null;
 
   return (
     <button
       onClick={toggleFollow}
       disabled={loading}
-      className={`px-4 py-1.5 rounded-full text-sm font-medium transition disabled:opacity-60 ${
+      className={`px-4 py-1.5 rounded-full text-sm font-medium transition active:scale-[0.96] disabled:opacity-70 flex items-center gap-1.5 ${
         isFollowing ? 'bg-gray-100 text-gray-700 border' : 'bg-brand text-white'
       }`}
     >
+      {loading && <Spinner size={12} />}
       {isFollowing ? 'Following' : 'Follow'}
     </button>
   );
