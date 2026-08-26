@@ -5,7 +5,7 @@ import CategoryFeed from '@/components/CategoryFeed';
 export default function ReelsPage() {
   return (
     <>
-      <Header title="Reels" />
+      <Header title="Short Clips" />
       <CategoryFeed category="reel" />
       <Navbar />
     </>
