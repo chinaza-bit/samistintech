@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import EmojiPicker from 'emoji-picker-react';
 import { Image as ImageIcon, Music, Link2, Smile, Palette, Type } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
+import Spinner from './Spinner';
 
 const BG_COLORS = ['#ffffff', '#FEF3C7', '#DBEAFE', '#FCE7F3', '#D1FAE5', '#111827'];
 const TEXT_SIZES = [
@@ -178,8 +179,9 @@ export default function CreatePost({ category = 'feed', onPublished }: Props) {
       <button
         onClick={handlePublish}
         disabled={publishing}
-        className="mt-3 w-full bg-brand text-white py-2 rounded-lg font-medium disabled:opacity-60"
+        className="mt-3 w-full bg-brand text-white py-2 rounded-lg font-medium disabled:opacity-60 active:scale-[0.98] transition flex items-center justify-center gap-2"
       >
+        {publishing && <Spinner size={15} />}
         {publishing ? 'Publishing…' : 'Publish'}
       </button>
     </div>
