@@ -5,7 +5,7 @@ import RouteLoader from '@/components/RouteLoader';
 
 export const metadata: Metadata = {
   title: 'SamistInTech',
-  description: 'Connect, create, sell, and grow — all in one place.',
+  description: 'Where tech builders, entrepreneurs, and innovators connect, share, and grow.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
