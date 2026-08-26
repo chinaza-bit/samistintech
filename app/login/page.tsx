@@ -53,7 +53,10 @@ export default function Login() {
     <div className="flex items-center justify-center min-h-screen px-4">
       <div className="w-full max-w-sm bg-white p-6 rounded-2xl shadow-lg border">
         <h1 className="text-2xl font-bold mb-1 text-brand">SamistInTech</h1>
-        <p className="text-gray-500 text-sm mb-5">Welcome back</p>
+<p className="text-[11px] uppercase tracking-wide text-gray-400 font-medium mb-2">
+  Tech · Business · Innovation
+</p>
+<p className="text-gray-500 text-sm mb-5">Welcome back</p>
 
         <input
           className="w-full border rounded-lg p-2.5 mb-3 outline-none focus:ring-2 focus:ring-brand transition disabled:bg-gray-50"
